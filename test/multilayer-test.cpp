@@ -40,7 +40,7 @@ int safe_main(int argc, char** argv)
   mat m;
   
   for (auto p : training_data) {
-    auto out = L.eval(p.first);
+    typename multilayer<sigmoid, sigmoid>::output_type out = L.eval(p.first);
 
     m = join_cols(m, abs(round(out) - p.second));
   }
