@@ -27,6 +27,10 @@ target_link_libraries(table-test nnpp)
 add_executable(multilayer-test test/multilayer-test.cpp test/test-harness.cpp)
 target_link_libraries(multilayer-test nnpp)
 
+add_executable(multilayer-table-test test/multilayer-table-test.cpp test/test-harness.cpp)
+target_link_libraries(multilayer-table-test nnpp)
+
 add_test(sigmoid-test    sigmoid-test)
 add_test(table-test      table-test)
 add_test(multilayer-test multilayer-test)
+add_test(multilayer-table-test multilayer-table-test)

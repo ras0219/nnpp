@@ -35,13 +35,11 @@ table::eval(table::cref_input_type in)
   return out;
 }
 
-// table::output_type
-// table::eval_full_ex(cref_table::input_type in)
-// {
-//   auto out = eval_ex(in);
-//   out.insert_cols(out.size(), vec{1.0});
-//   return out;
-// }
+table::full_output_type
+table::eval_full(table::cref_input_type in)
+{
+  return eval(in);
+}
 
 size_t table::inputs()
 {
