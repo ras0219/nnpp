@@ -16,7 +16,7 @@ set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE        "-O4 -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
 
-add_library(nnpp sigmoid.cpp table.cpp)
+add_library(nnpp src/sigmoid.cpp src/table.cpp)
 
 add_executable(sigmoid-test test/sigmoid-test.cpp test/test-harness.cpp)
 target_link_libraries(sigmoid-test nnpp)
