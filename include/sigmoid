@@ -1,0 +1,93 @@
+#ifndef _NEURAL_SIGMOID_HPP_
+#define _NEURAL_SIGMOID_HPP_
+
+#include <armadillo>
+
+namespace neural {
+
+  struct sigmoid {
+    typedef arma::rowvec input_type;
+    typedef arma::rowvec output_type;
+    typedef arma::vec    in_error_type;
+    typedef arma::vec    out_error_type;
+
+    typedef const input_type&     cref_input_type;
+    typedef const output_type&    cref_output_type;
+    typedef const in_error_type&  cref_in_error_type;
+    typedef const out_error_type& cref_out_error_type;
+
+    typedef output_type      full_output_type;
+    typedef cref_output_type cref_full_output_type;
+    static cref_output_type final_output(cref_full_output_type o);
+
+    sigmoid(std::size_t inputs, std::size_t outputs);
+
+    // Supervised training according to specified input and desired output
+    out_error_type train(input_type in,
+                         const output_type& desired);
+
+    // Supervised training, eliding the output evaluation
+    out_error_type train(input_type in,
+                         const output_type& out,
+                         const output_type& desired);
+
+    // Supervised training, eliding the extension of the input vector by 1
+    out_error_type train_ex(const input_type& in,
+                            const output_type& out,
+                            const output_type& desired);
+
+    // Evaluate from an input
+    output_type eval(input_type in);
+
+    // Evaluate from an input
+    full_output_type eval_full(input_type in);
+
+    // Evaluate from an input, eliding the extension of the input vector by 1
+    output_type eval_ex(const input_type& in);
+
+    // Evaluate from an input and return all intermediary results.
+    // Also eliding the extension of the input vector by 1
+    // output_type eval_full_ex(const input_type& in);
+
+    // Retrieve number of inputs
+    std::size_t inputs();
+
+    // Retrieve number of outputs
+    std::size_t outputs();
+
+    // Nonlinear transform function and its derivative.
+    static double function(double x);
+
+    // As above, but note that the parameter is y (the output of function(x))
+    static double derivative(double y);
+
+    // Backpropagate the given input, ouput, and error values.
+
+    // The return value is the input errors suitable for
+    // passing back to the previous layer
+    out_error_type backpropagate(input_type in,
+                                 const output_type& out,
+                                 in_error_type err);
+
+    // Backpropagate the given input, ouput, and error values.
+    // Note: the input vector must be extended by 1.
+
+    // The return value is the input errors suitable for
+    // passing back to the previous layer
+    out_error_type backpropagate_ex(const input_type& in,
+                                    const output_type& out,
+                                    in_error_type err);
+
+    // Internal matrix designating weights
+    arma::mat m;
+    // Learning rate; currently is fixed.
+    double learning_rate;
+  };
+
+}
+
+#endif
+
+// Local Variables:
+// mode: c++
+// End:

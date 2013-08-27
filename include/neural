@@ -1,0 +1,8 @@
+#ifndef _NEURAL_HPP_
+#define _NEURAL_HPP_
+
+#include <sigmoid>
+#include <table>
+#include <multilayer>
+
+#endif
