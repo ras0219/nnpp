@@ -41,7 +41,7 @@ table::eval_full(table::cref_input_type in)
   return eval(in);
 }
 
-size_t table::inputs()
+size_t table::categories()
 {
   return m.n_rows;
 }

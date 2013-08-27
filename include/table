@@ -41,8 +41,8 @@ namespace nnpp {
     // Also eliding the extension of the input vector by 1
     // output_type eval_full_ex(cref_input_type in);
 
-    // Retrieve number of categories (slightly different than inputs, but works ok)
-    std::size_t inputs();
+    // Retrieve number of categories (cardinality of input type)
+    std::size_t categories();
 
     // Retrieve number of outputs
     std::size_t outputs();

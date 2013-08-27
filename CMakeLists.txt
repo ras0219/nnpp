@@ -16,7 +16,7 @@ set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE        "-O4 -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
 
-add_library(nnpp src/sigmoid.cpp src/table.cpp)
+add_library(nnpp src/sigmoid.cpp src/table.cpp src/fanout.cpp)
 
 add_executable(sigmoid-test test/sigmoid-test.cpp test/test-harness.cpp)
 target_link_libraries(sigmoid-test nnpp)
@@ -30,7 +30,11 @@ target_link_libraries(multilayer-test nnpp)
 add_executable(multilayer-table-test test/multilayer-table-test.cpp test/test-harness.cpp)
 target_link_libraries(multilayer-table-test nnpp)
 
+add_executable(fanout-test test/fanout-test.cpp test/test-harness.cpp)
+target_link_libraries(fanout-test nnpp)
+
 add_test(sigmoid-test    sigmoid-test)
 add_test(table-test      table-test)
 add_test(multilayer-test multilayer-test)
 add_test(multilayer-table-test multilayer-table-test)
+add_test(fanout-test fanout-test)

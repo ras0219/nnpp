@@ -1,0 +1,74 @@
+#ifndef _NNPP_FANOUT_HPP_
+#define _NNPP_FANOUT_HPP_
+
+#include <armadillo>
+#include <vector>
+#include <table>
+
+namespace nnpp {
+
+  // Eventually, fanout should work on any network type. For now, we just do tables.
+  struct fanout {
+    typedef std::vector<table::input_type> input_type;
+    typedef arma::rowvec                   output_type;
+    typedef arma::mat                      in_error_type;
+    typedef arma::mat                      out_error_type;
+
+    typedef const input_type&   cref_input_type;
+    typedef const arma::rowvec& cref_output_type;
+    typedef const arma::mat&    cref_in_error_type;
+    typedef const arma::mat&    cref_out_error_type;
+
+    // Not sure how to best handle these yet
+    typedef arma::mat        full_output_type;
+    typedef const arma::mat& cref_full_output_type;
+    static cref_output_type final_output(cref_full_output_type o);
+
+    // Note: the actual output size will be calculated by table_outputs * inputs
+    fanout(std::size_t categories,
+           std::size_t inputs,
+           std::size_t table_outputs);
+
+    // Supervised training according to specified input and desired output
+    out_error_type train(cref_input_type in,
+                         cref_output_type desired);
+
+    // Supervised training, eliding the output evaluation
+    out_error_type train(cref_input_type in,
+                         full_output_type out,
+                         cref_output_type desired);
+
+    // Evaluate from an input
+    output_type eval(cref_input_type in);
+
+    // Evaluate from an input, preserving inner outputs
+    full_output_type eval_full(cref_input_type in);
+
+    // Retrieve number of inputs
+    std::size_t inputs();
+
+    // Retrieve number of categories
+    std::size_t categories();
+
+    // Retrieve number of outputs
+    std::size_t outputs();
+
+    // Backpropagate the given input, ouput, and error values.
+    // Note: the input vector must be extended by 1.
+    out_error_type backpropagate(cref_input_type in,
+                                 full_output_type out,
+                                 in_error_type err);
+
+    // Internal table
+    table t;
+    // Some measurements
+    std::size_t insize, outsize;
+  };
+
+}
+
+#endif
+
+// Local Variables:
+// mode: c++
+// End:
