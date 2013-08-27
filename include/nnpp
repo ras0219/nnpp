@@ -1,0 +1,12 @@
+#ifndef _NNPP_HPP_
+#define _NNPP_HPP_
+
+#include <sigmoid>
+#include <table>
+#include <multilayer>
+
+#endif
+
+// Local Variables:
+// mode: c++
+// End:

@@ -1,4 +1,4 @@
-namespace neural {
+namespace nnpp {
 
   template<class L1, class L2>
   typename multilayer<L1,L2>::cref_output_type

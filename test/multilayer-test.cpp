@@ -8,7 +8,7 @@
 
 using namespace std;
 using namespace arma;
-using namespace neural;
+using namespace nnpp;
 
 int safe_main(int argc, char** argv)
 {

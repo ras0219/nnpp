@@ -1,7 +1,7 @@
 #include <table>
 #include <armadillo>
 
-using namespace neural;
+using namespace nnpp;
 using namespace arma;
 using namespace std;
 

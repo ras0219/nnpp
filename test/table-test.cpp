@@ -7,7 +7,7 @@
 
 using namespace std;
 using namespace arma;
-using namespace neural;
+using namespace nnpp;
 
 string charmsg(char c) { return string(1, c); }
 

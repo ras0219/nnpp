@@ -3,7 +3,7 @@
 
 using namespace arma;
 using namespace std;
-using namespace neural;
+using namespace nnpp;
 
 sigmoid::cref_output_type
 sigmoid::final_output(sigmoid::cref_full_output_type o)

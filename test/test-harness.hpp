@@ -1,5 +1,5 @@
-#ifndef _NEURAL_TEST_HPP_
-#define _NEURAL_TEST_HPP_
+#ifndef _NNPP_TEST_HPP_
+#define _NNPP_TEST_HPP_
 
 #include <string>
 

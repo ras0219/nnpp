@@ -1,9 +1,9 @@
-#ifndef _NEURAL_TABLE_HPP_
-#define _NEURAL_TABLE_HPP_
+#ifndef _NNPP_TABLE_HPP_
+#define _NNPP_TABLE_HPP_
 
 #include <armadillo>
 
-namespace neural {
+namespace nnpp {
 
   struct table {
     typedef std::size_t           input_type;

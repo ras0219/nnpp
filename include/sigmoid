@@ -1,9 +1,9 @@
-#ifndef _NEURAL_SIGMOID_HPP_
-#define _NEURAL_SIGMOID_HPP_
+#ifndef _NNPP_SIGMOID_HPP_
+#define _NNPP_SIGMOID_HPP_
 
 #include <armadillo>
 
-namespace neural {
+namespace nnpp {
 
   struct sigmoid {
     typedef arma::rowvec input_type;

@@ -1,9 +1,9 @@
-#ifndef _NEURAL_MULTILAYER_HPP_
-#define _NEURAL_MULTILAYER_HPP_
+#ifndef _NNPP_MULTILAYER_HPP_
+#define _NNPP_MULTILAYER_HPP_
 
 #include <armadillo>
 
-namespace neural {
+namespace nnpp {
 
   template<class L1, class L2>
   struct multilayer {
