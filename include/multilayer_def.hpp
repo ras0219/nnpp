@@ -16,6 +16,11 @@ namespace nnpp {
   {}
 
   template<class L1, class L2>
+  multilayer<L1,L2>::multilayer(const L1& l1_old, const L2& l2_old)
+    : l1(l1_old), l2(l2_old)
+  {}
+
+  template<class L1, class L2>
   typename multilayer<L1,L2>::out_error_type
   multilayer<L1,L2>::train(multilayer<L1,L2>::cref_input_type in,
                            multilayer<L1,L2>::cref_output_type desired)

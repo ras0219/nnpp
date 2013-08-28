@@ -1,5 +1,6 @@
 #include <table>
 #include <armadillo>
+#include <cassert>
 
 using namespace nnpp;
 using namespace arma;
@@ -72,7 +73,8 @@ table::backpropagate(table::cref_input_type in,
 {
   for (size_t i = 0; i < err.size(); ++i)
     err[i] *= derivative(out[i]);
-    
+
+  assert(in < m.n_rows);
   m.row(in) += err.t() * learning_rate;
 
   return mat();

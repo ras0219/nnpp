@@ -28,6 +28,8 @@ namespace nnpp {
                std::size_t middle_param,
                std::size_t outer_param);
 
+    multilayer(const L1& l1_old, const L2& l2_old);
+
     // Supervised training according to specified input and desired output
     out_error_type train(cref_input_type in,
                          cref_output_type desired);

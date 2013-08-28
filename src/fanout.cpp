@@ -1,5 +1,6 @@
 #include <fanout>
 #include <armadillo>
+#include <cassert>
 
 using namespace nnpp;
 using namespace arma;
@@ -63,6 +64,7 @@ fanout::backpropagate(fanout::cref_input_type in,
   out.reshape(insize, t.outputs());
   err.reshape(t.outputs(), insize);
 
+  assert(in.size() == out.n_rows);
   for (size_t i = 0; i < in.size(); ++i)
     t.backpropagate(in[i], out.row(i), err.col(i));
 

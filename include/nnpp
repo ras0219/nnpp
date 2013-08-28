@@ -4,6 +4,7 @@
 #include <sigmoid>
 #include <table>
 #include <multilayer>
+#include <fanout>
 
 #endif
 
