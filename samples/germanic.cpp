@@ -13,7 +13,8 @@ using namespace std;
 using namespace arma;
 using namespace nnpp;
 
-typedef multilayer<fanout, sigmoid> network;
+typedef multilayer<sigmoid, sigmoid> xor_network;
+typedef multilayer<fanout, xor_network> network;
 
 std::default_random_engine g;
 std::uniform_int_distribution<size_t> sz(1, 6);
@@ -68,9 +69,9 @@ int main(int argc, char** argv)
 
   const size_t num_features = 3;
 
-  network L(fanout(128, 6, num_features), sigmoid(num_features * 6, 1));
+  network L(fanout(128, 6, num_features), xor_network(num_features * 6, 6, 1));
 
-  const int max_x = 501;
+  const int max_x = 1001;
 
   for (int x = 0; x < max_x; ++x) {
     for (auto p : training_data) {
@@ -101,6 +102,11 @@ int main(int argc, char** argv)
   }
   accept /= training_data.size();
   cout << "Accepted: " << accept << endl;
+
+  cout << "hidden layer weights" << endl;
+  cout << L.l2.l1.m << endl;
+  cout << "outer layer weights" << endl;
+  cout << L.l2.l2.m << endl;
 
   set<char> classes[1 << num_features];
   multimap<double, char> feature[num_features];
